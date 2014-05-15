@@ -41,8 +41,7 @@ Feature: Wheelchair Jimmy Fan
 
 In order to interact with a webapp, Capybara is used.  It can use different drivers that render out the full page of content.  Selenium is built in but WebKit and PhantomJS can be used.  The Capybara DSL allows you to define your Given/When/Then steps.  For example, to define the `Given I am logged into reddit` step, we can use Capybara like this:
 
-```
-!ruby
+```ruby
 Given(/^I am logged into reddit$/) do
     visit "http://www.reddit.com"
     within("#login_login-main") do
