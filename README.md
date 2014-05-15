@@ -52,9 +52,13 @@ Given(/^I am logged into reddit$/) do
 end
 ```
 
+The Given step is defined by passing in a Regular Expression.  This is a fairly basic one and only uses the special characters `^` and `$` to anchor the sentence to the beginning at ending of the string, respectivley.
+
 ### Experiment 1: Drake Subreddit
 
-### Experiment 2: Google Images
+Now that we have the the login step defined we can work on navigating reddit to fetch some content for us, add a comment and ensure our comment's content is on the page.
+
+### Experiment 2: YouTube
 
 ### Pickle
 

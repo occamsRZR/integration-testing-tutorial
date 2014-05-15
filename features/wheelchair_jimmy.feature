@@ -5,4 +5,10 @@ Feature: Wheelchair Jimmy Fan
 
 	Scenario: I want to search my favorite subreddit
 		Given I am logged into reddit
-	Scenario: I want to use Google Image Search
+		And I go to my favorite subreddit "WheelchairJimmy"
+		When I search for "I came here to fuck bitches"
+		And I want to save and open
+		And I click the first link
+		Then I should see Drake's swag
+		And I want to save a screenshot as "swag.png"
+	Scenario: I want to use YouTube
