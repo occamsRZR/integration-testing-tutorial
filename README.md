@@ -127,7 +127,7 @@ end
 
 The spoils of our labor:
 
-![Jimmy Swag](images/swag.png)
+![Jimmy Swag](https://bytebucket.org/42dev/tutorial-series-part-1-integration-testing/raw/ebca4969fb6926301c873a8ca49fe3353fbbe4bf/images/swag.png?token=038906fdae3c58745f45c14b393952fdd1c76c43)
 ### Pickle
 
 ### Case Study: Yoganonymous
