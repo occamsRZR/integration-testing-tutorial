@@ -54,12 +54,80 @@ end
 
 The Given step is defined by passing in a Regular Expression.  This is a fairly basic one and only uses the special characters `^` and `$` to anchor the sentence to the beginning at ending of the string, respectivley.
 
-### Experiment 1: Drake Subreddit
+### Experiment: Drake Subreddit
 
-Now that we have the the login step defined we can work on navigating reddit to fetch some content for us, add a comment and ensure our comment's content is on the page.
+Now that we have the the login step defined we can work on navigating reddit to fetch some content for us.
 
-### Experiment 2: YouTube
+We'll obviously want to visit our favorite subreddit, [/r/WheelchairJimmy](http://www.reddit.com/r/WheelchairJimmy) to do this.
 
+```ruby
+And I go to my favorite subreddit "WheelchairJimmy" # features/step_definitions/reddit_steps.rb:9
+
+Given /^I go to my favorite subreddit "(.*?)"$/ do |subreddit|
+	visit "http://www.reddit.com/r/#{subreddit}"
+end
+```
+
+Once on this subreddit, we'll want to search for one of our favorite [memes](http://knowyourmeme.com/memes/came-here-to-fuck-bitches).
+
+```ruby
+When I search for "I came here to fuck bitches"     # features/step_definitions/reddit_steps.rb:13
+
+When(/^I search for "(.*?)"$/) do |search_term|
+  ##
+  # puts cursor inside of search box
+  within "#search" do
+    fill_in 'search reddit', with: ''
+  end
+  ##
+  # cursor inside of search box opens the info bar
+  # check the restrict subreddit checkbox
+  within '.infobar' do
+    check 'restrict_sr'
+  end
+  ##
+  # put the search term in the field as well as newline to submit query
+  within "#search" do
+    fill_in 'search reddit', with: search_term + "\n"
+  end
+end
+```
+
+Since that is the one and only link, I want to click it.
+
+```ruby
+And I click the first link                          # features/step_definitions/reddit_steps.rb:33
+
+When(/^I click the first link$/) do
+  within('.linklisting') do
+    find('.title .may-blank').click
+  end
+end
+```
+
+From there, I want to see Drake's swag by saving and opening this page in another browser.
+
+```ruby
+Then I should see Drake's swag                      # features/step_definitions/reddit_steps.rb:39
+
+Then(/^I should see Drake's swag$/) do
+  save_and_open_page
+end
+```
+
+I can also save this image and use it in this guide.
+
+```ruby
+And I want to save a screenshot as "swag"           # features/step_definitions/reddit_steps.rb:43
+
+Then(/^I want to save a screenshot as "(.*?)"$/) do |image_name|
+	page.save_screenshot("#{Dir.pwd}/images/#{image_name}.png")
+end
+```
+
+The spoils of our labor:
+
+![Jimmy Swag](images/swag.png)
 ### Pickle
 
 ### Case Study: Yoganonymous

@@ -11,7 +11,6 @@ Given /^I go to my favorite subreddit "(.*?)"$/ do |subreddit|
 end
 
 When(/^I search for "(.*?)"$/) do |search_term|
-#  binding.pry
   ##
   # puts cursor inside of search box
   within "#search" do
@@ -41,5 +40,5 @@ Then(/^I should see Drake's swag$/) do
 end
 
 Then(/^I want to save a screenshot as "(.*?)"$/) do |image_name|
-	page.save_screenshot("/home/edward/repos/tutorial_1-integration_testing/images/#{image_name}.png")
+  page.save_screenshot("#{Dir.pwd}/images/#{image_name}.png")
 end
